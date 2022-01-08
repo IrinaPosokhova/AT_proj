@@ -2,10 +2,10 @@ package App;
 
 import App.pages.LoginPage;
 
-public class app {
+public class App {
     public LoginPage loginPage;
 
-    public app() {
+    public App() {
         loginPage = PageBuilder.buildLoginPage();
     }
 }

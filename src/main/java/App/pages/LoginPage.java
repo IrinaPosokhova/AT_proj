@@ -17,8 +17,8 @@ public class LoginPage extends BasePage {
         super(pageUrl);
     }
 
-    public void login(String email, String password, String role) {
-        loginField.setValue(email);
+    public void login(String login, String password, String role) {
+        loginField.setValue(login);
         passwordField.setValue(password);
         roleField.click();
         if (role.equals("Центральный администратор")) {
@@ -27,7 +27,7 @@ public class LoginPage extends BasePage {
 
         }
         signInButton.click();
-        Driver.waitForUrlContains("secure");
+        Driver.waitForUrlContains("/admin/main");
     }
 
 }
