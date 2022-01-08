@@ -1,24 +1,27 @@
 package UITests;
 
 import App.pages.LoginPage;
+import com.codeborne.selenide.WebDriverRunner;
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.*;
 
-public class LoginPageTests {
+public class LoginPageTests extends A_BaseTest{
 
     @Test
     public void loginCentralAdminTest(){
-/*        open("http://localhost:8080/admin/login");
-        $(By.xpath("//*[@id=\"admin_login__input--login\"]")).setValue("admin");
-        $(By.xpath("//*[@id=\"admin_login__input--password\"]")).setValue("admin");
-        $(By.xpath("//*[@id=\"admin_login__nz-select--authorizationRole\"]")).click();
-        $(By.xpath("//*[@id=\"cdk-overlay-0\"]/nz-option-container/div/cdk-virtual-scroll-viewport/div[1]/nz-option-item[1]/div")).click();
-        $(By.id("admin_login__button--submit")).click();
-        sleep(3000);*/
 
+        app.loginPage.open();
+        app.loginPage.login("admin", "admin", "Центральный администратор");
 
+        try {
+            WebDriverRunner.url().contains("main");
+        } catch (Throwable t) {
+            logger.warn("Ошибка входа на страницу!");
+            collector.addError(t);
+        }
 
     }
 }
